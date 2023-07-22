@@ -1,8 +1,8 @@
 
-require('dotenv').config()//to access teh secure info in the.env file-server files
+require('dotenv').config()//to access the secure info in the.env file-server files
 const {CONNECTION_STRING} = process.env
 const Sequelize = require('sequelize')// Sequelize is a class thats why S^
-// to make queries to the database that we seeded using postman in Render
+// to make queries from the server to the database that we seeded using postman in Render
 const sequelize = new Sequelize(CONNECTION_STRING,{
     dialect:'postgres',
     dialectOptions : {
@@ -251,7 +251,7 @@ module.exports = {
     },
     createCity: (req, res) =>{
         let {name,rating,countryId} = req.body
-        // console.log("*********************"+name,countryId);
+        // console.log(name,countryId);
         sequelize.query(`
         insert into cities (name, rating, country_id)
             values ('${name}', ${rating}, ${countryId});
